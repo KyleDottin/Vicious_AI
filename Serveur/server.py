@@ -1,11 +1,18 @@
-from fastapi import FastAPI, Header, HTTPException
+from fastapi import FastAPI, Header, HTTPException, UploadFile, File
 import requests
 import speech_to_text.whisper_transcribe as whisper_model
 import json
+import os
+import tempfile
+import shutil
+from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI()
 
-API_KEY = "VISHIELD-SECRET-KEY"
+API_KEY = os.getenv("API_KEY")
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
 
@@ -45,6 +52,21 @@ def transcribe_audio(audio_path: str) -> str:
     """Run Whisper and return the transcription."""
     result = whisper_model.transcribe_audio_to_text(audio_path)
     return result
+
+
+
+def save_result(data: dict, filename: str) -> str:
+    
+    folder = "results"
+    os.makedirs(folder, exist_ok=True)
+
+    filepath = os.path.join(folder, filename)
+
+    with open(filepath, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=4, ensure_ascii=False)
+
+    return filepath
+
 
 @app.post("/analyze-audio")
 async def analyze_audio(
@@ -108,7 +130,7 @@ async def generate(request: dict, x_api_key: str = Header(None)):
     response = requests.post(
         OLLAMA_URL,
         json={
-            "model": "llama3.1:8b",
+            "model": "qwen2.5:7b",
             "prompt": prompt,
             "stream": False
         }
