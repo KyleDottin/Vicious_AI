@@ -1,0 +1,11 @@
+{
+    "timestamp": "20260324T134716Z",
+    "source_file": "audio-wav-16khz_1002976_normalized.wav",
+    "transcription": " Hello. You have been contacted from Amazon this call is it regard to authorize a payment of $299. We would like you to inform that there has been an order place for an Apple iPhone 11 Pro using your account. If you do not authorize, then press want to speak our representative. Or press 2 to authorize. Thank you.",
+    "analysis": {
+        "risk_score": 85,
+        "is_vishing": true,
+        "reasoning": "La transcription contient plusieurs éléments caractéristiques du vishing : elle prétend provenir d'Amazon, demande l'autorisation de paiement avec une somme spécifique et utilise un système de touches pour réagir (1 ou 2). Ces éléments sont couramment utilisés par les escrocs.",
+        "urgency_detected": true
+    }
+}

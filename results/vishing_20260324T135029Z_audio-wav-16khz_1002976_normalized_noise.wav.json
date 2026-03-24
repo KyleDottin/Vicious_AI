@@ -1,0 +1,11 @@
+{
+    "timestamp": "20260324T135029Z",
+    "source_file": "audio-wav-16khz_1002976_normalized_noise.wav",
+    "transcription": " Hello. You have been contacted from Amazon this call is it regard to authorize a payment of $299. We would like you to inform that there has been an order place for an Apple iPhone 11 Pro using your account. If you do not authorize, then press want to speak our representative or press 2 to authorize. Thank you.",
+    "analysis": {
+        "risk_score": 85,
+        "is_vishing": true,
+        "reasoning": "Le message indique l'authentification d'un paiement et demande de confirmer un achat par téléphone, ce qui est une technique classique du vishing. Le ton presse et la demande directe de l'action (appuyer sur 2 pour autoriser) sont également des indicateurs suspects.",
+        "urgency_detected": true
+    }
+}
