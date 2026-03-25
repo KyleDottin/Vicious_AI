@@ -35,5 +35,9 @@ obj/
 .kotlin/
 
 # === Serveur ===
-
 Serveur/.env
+
+# === Firebase ===
+*-firebase-adminsdk-*.json
+app/google-service.json
+google-services.json
