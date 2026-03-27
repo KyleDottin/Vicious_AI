@@ -47,3 +47,12 @@ Lancer le serveur:
 python -m uvicorn Serveur.server:app --host 0.0.0.0 --port 8000
 
 Pas oublier de prendre speech to text et mettre le pyhton to pass aussi 
+Possibiliter d'avoit besoin du pytorch
+
+Installer Whisper:
+pip install openai-whisper
+
+Installer FFmpeg
+
+Installer PyTorch:
+pip install torch
