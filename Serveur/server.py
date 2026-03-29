@@ -163,6 +163,10 @@ async def end_session(
     }
 
     filename = f"session_{datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}.json"
-    save_result(result, filename)
+    filepath = save_result(result, filename)
 
-    return result
+    try:
+        return result
+    finally:
+        if os.path.exists(filepath):
+            os.remove(filepath)
