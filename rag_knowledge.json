@@ -1,0 +1,127 @@
+[
+  {
+    "text": "Bonjour, je suis conseiller bancaire, votre compte a été compromis, j'ai besoin de votre code de sécurité immédiatement.",
+    "label": "banque",
+    "risk": "high"
+  },
+  {
+    "text": "Nous avons détecté une activité suspecte sur votre compte, veuillez confirmer votre identité avec votre code SMS.",
+    "label": "banque",
+    "risk": "high"
+  },
+  {
+    "text": "Je vous appelle des impôts, vous avez un retard de paiement, une action légale sera engagée si vous ne payez pas maintenant.",
+    "label": "administration",
+    "risk": "high"
+  },
+  {
+    "text": "Ceci est un appel de la police, votre identité est liée à une fraude, coopérez immédiatement.",
+    "label": "autorité",
+    "risk": "high"
+  },
+  {
+    "text": "Votre carte bancaire va être bloquée, donnez-moi votre numéro complet pour vérification.",
+    "label": "banque",
+    "risk": "high"
+  },
+  {
+    "text": "Je suis du support technique Microsoft, votre ordinateur est infecté, installez ce logiciel rapidement.",
+    "label": "tech_support",
+    "risk": "high"
+  },
+  {
+    "text": "Votre colis est bloqué, vous devez payer des frais immédiatement pour le débloquer.",
+    "label": "livraison",
+    "risk": "medium"
+  },
+  {
+    "text": "Vous avez gagné un prix, mais vous devez payer des frais de traitement pour le recevoir.",
+    "label": "gain",
+    "risk": "medium"
+  },
+  {
+    "text": "Je suis votre fournisseur d'énergie, votre service sera coupé si vous ne régularisez pas maintenant.",
+    "label": "facture",
+    "risk": "high"
+  },
+  {
+    "text": "Nous avons besoin de vérifier votre identité, donnez-moi votre date de naissance et votre numéro d'assurance.",
+    "label": "data_theft",
+    "risk": "high"
+  },
+  {
+    "text": "Un membre de votre famille est en danger, envoyez de l'argent immédiatement.",
+    "label": "urgence_famille",
+    "risk": "high"
+  },
+  {
+    "text": "Votre compte Amazon a été piraté, confirmez votre mot de passe maintenant.",
+    "label": "compte_en_ligne",
+    "risk": "high"
+  },
+  {
+    "text": "Nous avons bloqué une transaction suspecte, validez-la en nous donnant votre code reçu par SMS.",
+    "label": "banque",
+    "risk": "high"
+  },
+  {
+    "text": "Je suis votre opérateur téléphonique, votre ligne sera suspendue sans action immédiate.",
+    "label": "telecom",
+    "risk": "medium"
+  },
+  {
+    "text": "Un remboursement est disponible, mais nous devons vérifier vos informations bancaires.",
+    "label": "remboursement",
+    "risk": "medium"
+  },
+  {
+    "text": "Votre compte a été compromis, vous devez agir dans les prochaines minutes.",
+    "label": "urgence",
+    "risk": "high"
+  },
+  {
+    "text": "Installez cette application pour sécuriser votre compte bancaire.",
+    "label": "malware",
+    "risk": "high"
+  },
+  {
+    "text": "Je suis du service fraude, donnez-moi votre code pour bloquer une transaction.",
+    "label": "banque",
+    "risk": "high"
+  },
+  {
+    "text": "Vous devez confirmer vos informations sinon votre compte sera supprimé.",
+    "label": "pression",
+    "risk": "medium"
+  },
+  {
+    "text": "Nous avons besoin de votre mot de passe pour finaliser la sécurisation.",
+    "label": "data_theft",
+    "risk": "high"
+  },
+  {
+    "text": "Votre abonnement sera renouvelé avec un coût élevé si vous n'annulez pas immédiatement.",
+    "label": "abonnement",
+    "risk": "medium"
+  },
+  {
+    "text": "Vous devez payer une amende immédiatement pour éviter des poursuites.",
+    "label": "administration",
+    "risk": "high"
+  },
+  {
+    "text": "Cliquez sur le lien que je vous envoie pour éviter la suspension de votre compte.",
+    "label": "phishing",
+    "risk": "high"
+  },
+  {
+    "text": "Donnez-moi vos informations pour confirmer votre identité rapidement.",
+    "label": "data_theft",
+    "risk": "high"
+  },
+  {
+    "text": "Nous avons besoin d'une action immédiate sinon votre compte sera définitivement bloqué.",
+    "label": "urgence",
+    "risk": "high"
+  }
+]

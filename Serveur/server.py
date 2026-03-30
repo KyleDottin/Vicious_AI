@@ -11,6 +11,7 @@ import firebase_admin
 from firebase_admin import credentials, auth as firebase_auth
 from fastapi import Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from .rag_engine import retrieve_relevant_context
 
 cred = credentials.Certificate("viciousai-firebase-adminsdk-fbsvc-19d9b0bcfa.json")
 firebase_admin.initialize_app(cred)
@@ -40,7 +41,19 @@ def detect_vishing(full_transcription: str) -> dict:
     Analyse la transcription COMPLÈTE de la conversation depuis le début.
     Plus de contexte partiel — l'IA voit tout à chaque segment.
     """
-    system_prompt = """Tu es un expert en cybersécurité spécialisé dans la détection du vishing (fraude téléphonique).
+
+    # 🔎 RAG : récupérer contexte pertinent
+    try:
+        recent_text = " ".join(full_transcription.split()[-200:])
+        rag_context = retrieve_relevant_context(recent_text)
+        rag_text = "\n".join(rag_context)
+    except Exception:
+        rag_text = ""
+
+    system_prompt = f"""Tu es un expert en cybersécurité spécialisé dans la détection du vishing (fraude téléphonique).
+
+Voici des exemples connus d’arnaques téléphoniques :
+{rag_text}
 
 Tu analyses des transcriptions de conversations téléphoniques en te basant sur 4 tactiques de social engineering reconnues :
 
@@ -55,18 +68,18 @@ Pour chaque conversation, tu dois :
 - Expliquer ton raisonnement de façon claire et concise
 
 Réponds UNIQUEMENT en JSON valide avec exactement ces champs :
-{
+{{
   "risk_score": <entier entre 0 et 100>,
   "is_vishing": <true ou false>,
   "reasoning": "<explication concise en français>",
   "urgency_detected": <true ou false>,
-  "tactics_detected": {
+  "tactics_detected": {{
     "urgency": <true ou false>,
     "authority": <true ou false>,
     "sensitive_information": <true ou false>,
     "impersonation": <true ou false>
-  }
-}"""
+  }}
+}}"""
 
     prompt = f"""
 Analyse la transcription complète de la conversation téléphonique suivante :
@@ -79,7 +92,7 @@ Identifie les tactiques de social engineering présentes et évalue le risque de
     try:
         response = requests.post(
             OLLAMA_URL,
-            json={
+            json={ 
                 "model": "qwen2.5:7b",
                 "prompt": f"{system_prompt}\n{prompt}",
                 "stream": False,
@@ -93,7 +106,13 @@ Identifie les tactiques de social engineering présentes et évalue le risque de
         )
         response.raise_for_status()
         result = json.loads(response.json().get("response", "{}"))
-        print(f"Analyse : score={result.get('risk_score')} | vishing={result.get('is_vishing')} | tactiques={result.get('tactics_detected')}")
+
+        print(
+            f"Analyse : score={result.get('risk_score')} | "
+            f"vishing={result.get('is_vishing')} | "
+            f"tactiques={result.get('tactics_detected')}"
+        )
+
         return result
 
     except Exception as e:
