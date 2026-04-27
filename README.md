@@ -125,7 +125,7 @@ Ollama permet de faire tourner le modèle **Qwen2.5:3b** en local pour la détec
 # Linux / macOS :
 curl -fsSL https://ollama.com/install.sh | sh
 
-# Windows : télécharger l'installeur sur https://ollama.com
+# Windows : télécharger l'installeur sur https://ollama.com/download
 ```
 
 **Télécharger le modèle utilisé par le serveur :**
