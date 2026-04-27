@@ -17,6 +17,16 @@ Lorsque l’analyse est en cours, une nouvelle vue affiche un pourcentage de con
 
 L’utilisateur peut également consulter une section d’aide expliquant le fonctionnement de l’application et la gestion des permissions Android.
 
+## Fonctionnement global
+
+1. L'application Android enregistre l'audio pendant l'appel
+2. L'audio est envoyé par segments (~5 secondes) au serveur
+3. Le serveur :
+   - transcrit l'audio avec Whisper
+   - récupère du contexte via le RAG
+   - analyse la conversation avec le modèle Qwen (via Ollama)
+4. Le serveur renvoie un score de risque en temps réel
+
 ## Permissions requises
 
 Pour fonctionner correctement, l’application nécessite certaines autorisations Android :
