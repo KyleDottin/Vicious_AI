@@ -62,7 +62,7 @@ FFmpeg est nécessaire pour que Whisper puisse traiter les fichiers audio.
 
 Téléchargez FFmpeg depuis le site officiel :
 
-👉 https://www.ffmpeg.org/download.html
+https://www.ffmpeg.org/download.html
 
 ---
 
