@@ -167,7 +167,9 @@ Ollama tourne sur `http://localhost:11434` par défaut, ce qui correspond à la 
 ### 4. Téléchargé une clé Firebase pour le token JWT
 
 Aller sur le site firebase.google.com puis dans Go to console
+
 Créer ensuite un projet puis dans Paramètres et Comptes de service, cliquer sur Générer une nouvelle clé privée
+
 Metter le fichier json téléchargé à la racine du projet
 
 Puis changer dans la ligne dans serveur.py le nom du fichier avec le votre
