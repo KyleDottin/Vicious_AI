@@ -60,11 +60,23 @@ Le projet repose sur les technologies suivantes :
 
 FFmpeg est nécessaire pour que Whisper puisse traiter les fichiers audio.
 
+Téléchargez FFmpeg depuis le site officiel :
+
+👉 https://www.ffmpeg.org/download.html
+
+---
+
 **Windows :**
+
+1. Aller sur le site officiel
+2. Cliquer sur **Windows builds**
+3. Télécharger une version (ex : gyan.dev ou BtbN builds)
+4. Extraire l’archive `.zip`
+5. Ajouter le dossier `bin` au **PATH système**
+
+Exemple :
 ```bash
-winget install ffmpeg
-# ou via Chocolatey :
-choco install ffmpeg
+C:\ffmpeg\bin
 ```
 
 **macOS :**
