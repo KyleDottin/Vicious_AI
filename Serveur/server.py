@@ -6,12 +6,12 @@ import os
 import tempfile
 import shutil
 from datetime import datetime
-from dotenv import load_dotenv
 import firebase_admin
 from firebase_admin import credentials, auth as firebase_auth
 from fastapi import Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from .rag_engine import retrieve_relevant_context
+from contextlib import asynccontextmanager
 
 cred = credentials.Certificate("viciousai-firebase-adminsdk-fbsvc-19d9b0bcfa.json")
 firebase_admin.initialize_app(cred)
@@ -27,7 +27,13 @@ def verify_firebase_token(
     except Exception:
         raise HTTPException(status_code=401, detail="Token Firebase invalide ou expiré")
 
-app = FastAPI()
+# ── Lifespan (chargement au démarrage) ───────────────────────────────────────
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    whisper_model.load_model("medium")
+    yield
+
+app = FastAPI(lifespan=lifespan)
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
 
@@ -97,6 +103,7 @@ Identifie les tactiques de social engineering présentes et évalue le risque de
             OLLAMA_URL,
             json={ 
                 "model": "qwen2.5:3b",
+                "keep_alive": "5m",
                 "prompt": f"{system_prompt}\n{prompt}",
                 "stream": False,
                 "format": "json",
@@ -126,7 +133,14 @@ Identifie les tactiques de social engineering présentes et évalue le risque de
 # SPEECH TO TEXT
 # -----------------------------
 def transcribe_audio(audio_path: str) -> str:
-    return whisper_model.transcribe_audio_to_text(audio_path)
+    result = whisper_model.transcribe_audio_to_text(
+        audio_path,
+        model_size="medium",  # était "base" par défaut
+        language="fr",        # était "en" par défaut
+        fp16=False
+    )
+    print(f"[Whisper] Transcription : {result}")
+    return result
 
 # -----------------------------
 # SAVE JSON

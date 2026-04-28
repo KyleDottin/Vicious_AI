@@ -27,7 +27,7 @@ NB_FILES        = 10          # nombre de fichiers audio (test1.m4a à test10.m4
 SEGMENT_MS      = 5_000       # durée de chaque segment en ms (5 secondes)
 DELAY_S         = 5           # délai entre chaque envoi (reproduit l'app Android)
 
-FIREBASE_TOKEN  = "TOKEN"
+FIREBASE_TOKEN  = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjNiMDk1NzQ3YmY4MzMxZWE0YWQ1M2YzNzBjNjMyNjAxNzliMGQyM2EiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vdmljaW91c2FpIiwiYXVkIjoidmljaW91c2FpIiwiYXV0aF90aW1lIjoxNzc2NzgwMjQ0LCJ1c2VyX2lkIjoiRmhiWFE4RHNRNFYxTTIxRG9kVDNYbjR3bTF0MiIsInN1YiI6IkZoYlhROERzUTRWMU0yMURvZFQzWG40d20xdDIiLCJpYXQiOjE3NzczMDU1ODUsImV4cCI6MTc3NzMwOTE4NSwiZW1haWwiOiJtYXRAb3JhbmdlLmZyIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbIm1hdEBvcmFuZ2UuZnIiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.OKO778HXlXCpVqG4p-GuasvEL_IuuocAGuMaS1_uM2-4Csr65Ce-fc7KO6Q-WnrN9dzGK7lsY2ZcOuK61Be3vgPBt9ZtSev8jasLeTVNpdi1FYnFQx1W9aBAEU2CBgAVfXJpipAazDmbgS4j21WjmIjLT-UYb58yqGNu4MswsMhvKaWmycy-u5H5vNceiMhVvZ0cED2B2OaFVDr_Jev9sgtRbuAg1Yvfj0YTZHGQ_9vdCKxQXAzpHY2oKkRvMLvYXuAAscqIJ4uu9JPceQZ1gboatq0PMM3oO7OHqZ97tKb4ngYCuKsEpZKTqZQ38nx4Skzv9rI0jQ5gKNJHDmPDsg"
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 

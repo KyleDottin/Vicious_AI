@@ -38,7 +38,7 @@ class DecisionActivity : AppCompatActivity() {
         private const val BIT_RATE         = 128_000
 
         // Remplacer par l'IP locale
-        private const val SERVER_URL = "http://192.168.2.49:8000"
+        private const val SERVER_URL = "http://IPlocale:8000"
     }
 
     // ── État ──────────────────────────────────────────────────────────────────
@@ -426,11 +426,11 @@ class DecisionActivity : AppCompatActivity() {
 
     private fun createRecorder(outputFile: File): MediaRecorder =
         MediaRecorder(this).apply {
-            setAudioSource(MediaRecorder.AudioSource.MIC)
+            setAudioSource(MediaRecorder.AudioSource.VOICE_COMMUNICATION) // ← ici
             setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
             setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
-            setAudioSamplingRate(SAMPLE_RATE)
-            setAudioEncodingBitRate(BIT_RATE)
+            setAudioSamplingRate(16_000) // réduis à 16kHz, suffisant pour la voix
+            setAudioEncodingBitRate(32_000) // réduis aussi, inutile d'avoir 128kbps pour de la voix
             setOutputFile(outputFile.absolutePath)
             prepare()
         }

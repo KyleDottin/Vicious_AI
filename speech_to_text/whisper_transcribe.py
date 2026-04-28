@@ -1,7 +1,9 @@
 import whisper
 import shutil
 
-def transcribe_audio_to_text(audio_path: str, model_size: str = "base", language: str = "en", fp16: bool = False) -> str:
+_model_cache: dict = {}
+
+def transcribe_audio_to_text(audio_path: str, model_size: str = "medium", language: str = "fr", fp16: bool = False) -> str:
     """
     Transcribe an audio into a text with Whisper.
 
@@ -23,14 +25,32 @@ def transcribe_audio_to_text(audio_path: str, model_size: str = "base", language
     if ffmpeg_path is None:
         raise EnvironmentError("ffmpeg not found. Please install ffmpeg and ensure it's in your system PATH.")
 
-    model = whisper.load_model(model_size)
+    # Charge le modèle une seule fois et le garde en mémoire
+    if model_size not in _model_cache:
+        print(f"[Whisper] Chargement du modèle '{model_size}'...")
+        _model_cache[model_size] = whisper.load_model(model_size)
 
-    result = model.transcribe(audio_path, language=language, fp16=fp16)
+    model = _model_cache[model_size]
+
+    result = model.transcribe(
+        audio_path,
+        language=language,
+        fp16=fp16,
+        temperature=0.0,
+        condition_on_previous_text=True
+    )
 
     return result["text"]
 
+def load_model(model_size: str = "medium") -> None:
+    """Précharge le modèle Whisper en mémoire."""
+    if model_size not in _model_cache:
+        print(f"[Whisper] Chargement du modèle '{model_size}'...")
+        _model_cache[model_size] = whisper.load_model(model_size)
+        print(f"[Whisper] Modèle '{model_size}' prêt.")
+
 
 if __name__ == "__main__":
-    text = transcribe_audio("audio-wav-16khz_1002976_normalized_noise.wav")
+    text = transcribe_audio_to_text("audio-wav-16khz_1002976_normalized_noise.wav")
     print("Texte transcrit :")
     print(text)

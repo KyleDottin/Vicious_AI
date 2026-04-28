@@ -191,6 +191,7 @@ Identifie les tactiques de social engineering présentes et évalue le risque de
             OLLAMA_URL,
             json={
                 "model": "qwen2.5:3b",
+                "keep_alive": "5m",
                 "prompt": f"{system_prompt}\n{prompt}",
                 "stream": False,
                 "format": "json",
