@@ -103,10 +103,9 @@ Cloner le dépôt et installer les packages :
 ```bash
 git clone https://github.com/KyleDottin/Vicious_AI.git
 cd Vicious_AI
-pip install -r requirements.txt
 ```
 
-Si le fichier `requirements.txt` n'est pas présent, installer manuellement :
+Installer les dépendances suivantes :
 
 ```bash
 # Serveur web
