@@ -93,7 +93,7 @@ Vérifier l'installation :
 ```bash
 ffmpeg -version
 ```
-Pour Windows, peut demander de créer le raccourci pour qu'il puisse le reconnaître
+
 ---
 
 ### 2. Installer les dépendances Python
