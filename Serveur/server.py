@@ -13,7 +13,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from .rag_engine import retrieve_relevant_context
 from contextlib import asynccontextmanager
 
-cred = credentials.Certificate("viciousai-firebase-adminsdk-fbsvc-19d9b0bcfa.json")
+cred = credentials.Certificate("viciousai-firebase-adminsdk-fbsvc-xxxx.json")
 firebase_admin.initialize_app(cred)
 
 bearer_scheme = HTTPBearer()

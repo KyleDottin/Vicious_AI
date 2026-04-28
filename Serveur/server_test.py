@@ -8,14 +8,13 @@ import tempfile
 import shutil
 import time
 from datetime import datetime
-from dotenv import load_dotenv
 import firebase_admin
 from firebase_admin import credentials, auth as firebase_auth
 from fastapi import Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from .rag_engine import retrieve_relevant_context
 
-cred = credentials.Certificate("viciousai-firebase-adminsdk-fbsvc-19d9b0bcfa.json")
+cred = credentials.Certificate("viciousai-firebase-adminsdk-fbsvc-xxxx.json")
 firebase_admin.initialize_app(cred)
 
 bearer_scheme = HTTPBearer()
