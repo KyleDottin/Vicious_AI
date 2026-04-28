@@ -17,6 +17,16 @@ Lorsque l’analyse est en cours, une nouvelle vue affiche un pourcentage de con
 
 L’utilisateur peut également consulter une section d’aide expliquant le fonctionnement de l’application et la gestion des permissions Android.
 
+## Fonctionnement global
+
+1. L'application Android enregistre l'audio pendant l'appel
+2. L'audio est envoyé par segments (~5 secondes) au serveur
+3. Le serveur :
+   - transcrit l'audio avec Whisper
+   - récupère du contexte via le RAG
+   - analyse la conversation avec le modèle Qwen (via Ollama)
+4. Le serveur renvoie un score de risque en temps réel
+
 ## Permissions requises
 
 Pour fonctionner correctement, l’application nécessite certaines autorisations Android :
@@ -50,11 +60,23 @@ Le projet repose sur les technologies suivantes :
 
 FFmpeg est nécessaire pour que Whisper puisse traiter les fichiers audio.
 
+Téléchargez FFmpeg depuis le site officiel :
+
+https://www.ffmpeg.org/download.html
+
+---
+
 **Windows :**
+
+1. Aller sur le site officiel
+2. Cliquer sur **Windows builds**
+3. Télécharger une version (ex : gyan.dev ou BtbN builds)
+4. Extraire l’archive `.zip`
+5. Ajouter le dossier `bin` au **PATH système**
+
+Exemple :
 ```bash
-winget install ffmpeg
-# ou via Chocolatey :
-choco install ffmpeg
+C:\ffmpeg\bin
 ```
 
 **macOS :**
@@ -125,7 +147,7 @@ Ollama permet de faire tourner le modèle **Qwen2.5:3b** en local pour la détec
 # Linux / macOS :
 curl -fsSL https://ollama.com/install.sh | sh
 
-# Windows : télécharger l'installeur sur https://ollama.com
+# Windows : télécharger l'installeur sur https://ollama.com/download
 ```
 
 **Télécharger le modèle utilisé par le serveur :**
@@ -145,7 +167,9 @@ Ollama tourne sur `http://localhost:11434` par défaut, ce qui correspond à la 
 ### 4. Téléchargé une clé Firebase pour le token JWT
 
 Aller sur le site firebase.google.com puis dans Go to console
+
 Créer ensuite un projet puis dans Paramètres et Comptes de service, cliquer sur Générer une nouvelle clé privée
+
 Metter le fichier json téléchargé à la racine du projet
 
 Puis changer dans la ligne dans serveur.py le nom du fichier avec le votre
